@@ -1,0 +1,92 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f8e8ee, #e7f0fd);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.card {
+    background: white;
+    padding: 2.5rem 3rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 600px;
+    width: 90%;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.buttons {
+    margin-top: 6rem;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+button {
+    font-size: 1.1rem;
+    padding: 0.7rem 1.6rem;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.yes {
+    background: #e63973;
+    color: white;
+    left: 20%;
+}
+
+.no {
+    background: #ccc;
+    color: #333;
+    transition: 0.2s ease-out;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Countdown styles */
+.subtitle {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 2rem;
+}
+
+.countdown {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    font-weight: bold;
+}
+
+.heart {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+}
+
+.footer {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: #999;
+}
+
+canvas {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+}
