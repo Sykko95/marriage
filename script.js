@@ -11,10 +11,8 @@ let yesScale = 1;
 function moveNoButton() {
     const areaRect = buttonArea.getBoundingClientRect();
     const btnRect = noBtn.getBoundingClientRect();
-
     const maxX = areaRect.width - btnRect.width;
     const maxY = areaRect.height - btnRect.height;
-
     const x = Math.random() * maxX;
     const y = Math.random() * maxY;
 
@@ -22,30 +20,23 @@ function moveNoButton() {
     noBtn.style.top = `${y}px`;
     noBtn.style.bottom = `unset`;
     noBtn.style.position = `absolute`;
-
     escapeCount++;
-
-    // Grow "Yes" button
-    yesScale += 0.05;
+    yesScale += 0.12;
     yesBtn.style.transform = `scale(${yesScale})`;
 
-    // Change text after enough escapes
-    if (escapeCount >= 30) {
+    if (escapeCount >= 50) {
         noBtn.textContent = "Desisto 😭";
     }
 }
 
-// Desktop + mobile
 noBtn.addEventListener("mouseenter", moveNoButton);
 noBtn.addEventListener("touchstart", moveNoButton);
-
 yesBtn.addEventListener("click", () => {
     proposalCard.classList.add("hidden");
     countdownCard.classList.remove("hidden");
     startConfetti();
 });
 
-// ===== Confetti =====
 const canvas = document.getElementById("confetti");
 const ctx = canvas.getContext("2d");
 
@@ -90,7 +81,6 @@ function updateConfetti() {
     }
 }
 
-// ===== Countdown logic (unchanged) =====
 function timeUntil(targetDate) {
     const now = new Date();
     const target = new Date(targetDate);
@@ -111,17 +101,8 @@ function timeUntil(targetDate) {
         days += daysInPrevMonth;
     }
 
-    let timeDiffMs =
-        target.getHours() * 3600000 +
-        target.getMinutes() * 60000 +
-        target.getSeconds() * 1000 -
-        (now.getHours() * 3600000 +
-         now.getMinutes() * 60000 +
-         now.getSeconds() * 1000);
-
     // If time-of-day already passed, borrow 1 day
-    if (timeDiffMs < 0) {
-        timeDiffMs += 24 * 3600000;
+    if (now.getHours() > target.getHours() && now.getMinutes() > target.getMinutes() && now.getSecond() > target.getSeconds()) {
         days--;
         if (days < 0) {
             months--;
@@ -169,4 +150,5 @@ function updateCountdown() {
 }
 
 updateCountdown();
+
 setInterval(updateCountdown, 1000);
