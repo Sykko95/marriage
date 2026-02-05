@@ -102,7 +102,7 @@ function timeUntil(targetDate) {
     }
 
     // If time-of-day already passed, borrow 1 day
-    if (now.getHours() >= target.getHours() && now.getMinutes() >= target.getMinutes() && now.getSeconds() > target.getSeconds()) {
+    if (now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds() > target.getHours() * 3600 + target.getMinutes() * 60 + target.getSeconds()) {
         days--;
         if (days < 0) {
             months--;
